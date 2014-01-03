@@ -1,0 +1,20 @@
+<div id="heading">
+	<h1>Upcoming Events</h1>
+</div>
+<marquee loop="-1" scrollamount="2" width="100%" id="upcoming" direction="up" onmouseover="this.stop();" onmouseout="this.start();">
+
+
+	<% for event in @events %>
+
+	<% if event.date >= Date.today && event.date < Date.today+15.days %>
+	<a href="/events/<%= event.id %>">		
+		<%= event.date %>
+		<br>
+		<%= event.title %>
+		<br><br>
+	</a>
+	<% end %>	
+
+	<% end %>	
+
+</marquee>

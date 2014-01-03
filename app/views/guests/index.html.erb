@@ -1,0 +1,16 @@
+<h1>Listing guests</h1>
+
+  <% @guests.each do |guest| %>
+    <% if params[:event_id] == guest.event_id.to_s %>
+    Name :
+    <%= guest.name %>
+    <br>
+    Phone :
+    <%= guest.phone_no %>
+    <br>
+    <%= link_to 'Show', guest %>
+    <%= link_to 'Edit', edit_guest_path(guest) %>
+    <%= link_to 'Destroy', guest, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <br><br>
+  <% end %>
+<% end %>

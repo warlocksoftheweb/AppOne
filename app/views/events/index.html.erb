@@ -1,0 +1,25 @@
+<h1>Listing events</h1>
+
+<%= link_to 'New Event', new_event_path %>
+
+<% @events.each do |event| %>
+    <br><br>
+    <%= event.date %>
+    <br>
+    <b><%= event.title %></b>
+    <br>
+    <%= event.description %>
+    <br>
+    <% if Event.find(event.id).guests.count !=0 %>
+    <%= link_to 'Guest list', guests_path(event_id: event.id) %>
+    <br>
+    <% end %>
+    <%= link_to 'Show', event %>
+    <%= link_to 'Edit', edit_event_path(event) %>
+    <%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <br><br>
+    <hr width="350px">
+<% end %>
+
+
+
